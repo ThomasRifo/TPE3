@@ -128,6 +128,8 @@ class Viajes
             $pasajeros = $this->getPasajeros();
             $pasajeros[] = $objPasajero;
             $this->setPasajeros($pasajeros);
+            $sumarTotalAbonado = $this->getTotalAbonado() + $costoPasaje;
+            $this->setTotalAbonado($sumarTotalAbonado);
         }
         return $costoPasaje;
     }

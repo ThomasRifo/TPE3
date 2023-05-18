@@ -10,13 +10,12 @@ include_once 'PasajerosNecesidades.php';
 
 $listaViajes = array();
 
-// Instancia de la clase Viaje, con los atributos 001, Bariloche, 24.
 $objResponsable = new ResponsableV(110, 2000, "Raul", "Gonzalez");
 $viaje = new Viajes("001", "Bariloche", 24, $objResponsable, 11500);
 $listaViajes[$viaje->getCodigo()] = $viaje;
 $listaPasajeros = array();
 
-//print_r($listaViajes);
+
 //Menú principal
 
 $opcion = 0;
@@ -66,14 +65,15 @@ while ($opcion != 4) {
             $codigo = trim(fgets(STDIN));
             $encontro = false;
 
-            //Uso un foreach porque el while no sirve para mi caso en particular, ya que yo tengo como clave el codigo de viaje, no el orden en el que se encuentran dentro del array, por lo que $i = 0 con $listaViajes[$i] da undefined. No se me ocurrio una forma mejor de realizarlo.
+            //Uso un foreach porque el while no sirve para mi caso en particular, ya que yo tengo como clave el codigo de viaje, no el orden en el que se encuentran dentro del array, por lo que $i = 0 con $listaViajes[$i] da undefined.
             foreach ($listaViajes as $viaje) {
                 if ($codigo == $viaje->getCodigo()) {
                     $encontro = true;
                     break;
                 }
             }
-            /*//Verifica que se pueda acceder al viaje con el código dado por el usuario y si es posible, cambia encontro a true y almacena el viaje. Es la forma alternativa por si el foreach está mal aplicado.
+            /*
+            //Verifica que se pueda acceder al viaje con el código dado por el usuario y si es posible, cambia encontro a true y almacena el viaje. Es la forma alternativa por si el foreach está mal aplicado.
             if (isset($listaViajes[$codigo])) {
                 $encontro = true;
                 $viaje = $listaViajes[$codigo];
